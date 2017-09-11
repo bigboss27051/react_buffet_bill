@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
+    "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.13",
     "redux": "^3.7.2"
@@ -17,5 +18,23 @@
   "devDependencies": {
     "redux-logger": "^3.0.6",
     "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-1": "^6.22.0",
+    "debug": "~2.6.0",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router-dom": "^4.1.2",
+    "react-scripts": "1.0.11",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "serve-favicon": "~2.3.2"
   }
 }

@@ -1,4 +1,4 @@
-export function books(state={
+export function promotions(state={
   promotions:[{
     _id:1,
     title:'this is the first promotion',
@@ -14,9 +14,8 @@ export function books(state={
 },action){
   switch (action.type) {
     case 'GET_PROMOTIONS':
-    return {...state,promotions:[...state.promotions]}
-      break;
+      return {...state,promotions:[...state.promotions]}
+    break;
   }
-}
-return state
+  return state
 }
