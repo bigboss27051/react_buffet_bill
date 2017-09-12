@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Promotion from './Promotion.js'
+import {Grid, Row, Carousel} from 'react-bootstrap'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {getPromotions} from '../../actions/promotions'
@@ -8,17 +8,27 @@ class PromotionList extends Component {
   componentDidMount(){
       this.props.getPromotions();
   }
+
   render() {
-    let data = this.props.promotions
-    console.log('data',data);
+    const promotionList = this.props.promotions.map((promotion) => {
+      return (
+        <Carousel.Item key={promotion.id}>
+            <img width={900} height={300} alt="900x300" src={(promotion.img === '') ? ('/images/no_image.png') : (promotion.img )} />
+            <Carousel.Caption>
+              <h3>{promotion.title}</h3>
+              <p>{promotion.description}</p>
+            </Carousel.Caption>
+        </Carousel.Item>
+      )
+    })
     return (
-      <div>
-        {
-          this.props.promotions.map( promotion =>
-            <Promotion key={promotion._id} promotion={promotion} />
-          )
-        }
-      </div>
+      <Grid>
+        <Row>
+          <Carousel>
+            {promotionList}
+          </Carousel>
+        </Row>
+    </Grid>
     )
   }
 }
