@@ -1,19 +1,19 @@
 import axios from 'axios'
 
- export function getPromotions(){
+ export function getBuffetPrices(){
    return function(dispatch){
     axios.get('/api/promotions')
     .then((response) => {
       dispatch({
-        type:'GET_PROMOTIONS',
+        type:'GET_BUFFET_PRICE',
         payload:response.data
       })
     })
     .catch(function(err){
       dispatch({
-        type:'GET_PROMOTIONS_REJECTED',
+        type:'GET_BUFFET_PRICE_REJECTED',
         payload:err
       })
     })
-  }
-}
+   }
+   }

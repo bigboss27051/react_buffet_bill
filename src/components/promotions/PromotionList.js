@@ -10,10 +10,10 @@ class PromotionList extends Component {
   }
 
   render() {
-    const promotionList = this.props.promotions.map((promotion) => {
+    const promotionList = this.props.promotions.map(promotion => {
       return (
-        <Carousel.Item key={promotion.id}>
-            <img width={900} height={300} alt="900x300" src={(promotion.img === '') ? ('/images/no_image.png') : (promotion.img )} />
+        <Carousel.Item key={promotion._id}>
+            <img width={900} height={300} alt="900x300" src={(promotion.img === '' || promotion.img === null) ? ('/images/no_image.png') : (promotion.img )} />
             <Carousel.Caption>
               <h3>{promotion.title}</h3>
               <p>{promotion.description}</p>
