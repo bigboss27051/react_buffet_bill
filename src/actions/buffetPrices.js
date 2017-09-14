@@ -2,7 +2,7 @@ import axios from 'axios'
 
  export function getBuffetPrices(){
    return function(dispatch){
-    axios.get('/api/promotions')
+    axios.get('/api/buffetprices')
     .then((response) => {
       dispatch({
         type:'GET_BUFFET_PRICE',
@@ -16,4 +16,4 @@ import axios from 'axios'
       })
     })
    }
-   }
+ }

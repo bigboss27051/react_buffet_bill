@@ -13,7 +13,7 @@ class PromotionList extends Component {
     const promotionList = this.props.promotions.map(promotion => {
       return (
         <Carousel.Item key={promotion._id}>
-            <img width={900} height={300} alt="900x300" src={(promotion.img === '' || promotion.img === null) ? ('/images/no_image.png') : (promotion.img )} />
+            <img width={900} height={300} alt="900x300" className="img-responsive center-block" src={(promotion.img === '' || promotion.img === null) ? ('/images/no_image.png') : (promotion.img )} />
             <Carousel.Caption>
               <h3>{promotion.title}</h3>
               <p>{promotion.description}</p>

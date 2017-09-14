@@ -1,23 +1,34 @@
 import React, {Component} from 'react'
 import {Well, Row, Col, Panel} from 'react-bootstrap'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {getBill} from '../../actions/bill'
 
 class Bill extends Component {
+
+  componentDidMount(){
+    this.props.getBill();
+  }
+
   render() {
+    const bill = this.props.bill;
     return(
       <Well>
           <Panel>
             <Row>
               <Col xs={12} sm={6}>
-                <p>Customers (Qty.)</p>
-                <p>Discount (percent)</p>
+                <p>Customers</p>
+                <p>{bill.promotionTitle} </p>
+                <p>Discount</p>
                 <p>Discount (Bath)</p>
                 <p>Total</p>
               </Col>
               <Col xs={12} sm={6}>
-                <p>0</p>
-                <p>15%</p>
-                <p>20</p>
-                <p>500</p>
+                <p>{bill.customers} (Qty.)</p>
+                <p>&nbsp;</p>
+                <p>{bill.discountPercent} %</p>
+                <p>{bill.discount} Bath</p>
+                <p>{bill.total} Bath</p>
               </Col>
             </Row>
           </Panel>
@@ -25,4 +36,17 @@ class Bill extends Component {
     )
   }
 }
-export default Bill
+
+function mapStateToProps(state){
+  return {
+    bill:state.bill.bill
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    getBill:getBill
+  },dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Bill)

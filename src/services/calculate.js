@@ -1,46 +1,38 @@
-export function calculate(promotions, dataCalculateForm){
-  const promotionFromCouponId;
-  const promotionFromCustomerId;
-  const promotionFromExpenseId;
+export function calculateBill(promotions, dataCalculateForm){
+let discount = 0;
+let discountPercent = 0;
+let total = 0;
+let expenseForm = 0;
+let promotionTitle = '';
+let promotionDescription = '';
 
-  var expenseFromCoupon = promotions.filter(function(promotion) {
-    let exprenseForm = dataCalculateForm.customers * dataCalculateForm.buffetPrice;
-    let discountPercent = promotion.coupon === dataCalculateForm.coupon ? promotion.discountPercent : 0;
-    promotionFromCouponId = promotion.coupon === dataCalculateForm.coupon ? promotion.id : 0;
-    return expenseResult = exprenseForm - ((exprenseForm / 100) * discountPercent);
+let discountPrice = promotions.filter(function(promotion) {
+      expenseForm = dataCalculateForm.customers * dataCalculateForm.buffetPrice;
+
+      if (dataCalculateForm.customers >= promotion.customers
+        && dataCalculateForm.coupon === promotion.coupon
+        && expenseForm > promotion.expense) {
+          discountPercent = promotion.discountPercent;
+          discount = ((expenseForm / 100) * discountPercent);
+          let temp_expense_calculate = expenseForm - discount;
+          if (temp_expense_calculate < total || total === 0) {
+            total = temp_expense_calculate;
+            promotionTitle = promotion.title;
+            promotionDescription = promotion.description;
+          }
+      }
   });
-
-  var expenseFromCustomers = promotions.filter(function(promotion) {
-    let exprenseForm = dataCalculateForm.customers * dataCalculateForm.buffetPrice;
-    var discountPercent = dataCalculateForm.customers >== promotion.customers ? promotion.discountPercent : 0;
-    promotionFromCustomerId = dataCalculateForm.customers >== promotion.customers ? promotion.id : 0;
-    return expenseResult = exprenseForm - ((exprenseForm / 100) * discountPercent);
-  });
-
-  var expenseFromExpense = promotions.filter(function(promotion) {
-    let exprenseForm = dataCalculateForm.customers * dataCalculateForm.buffetPrice;
-    var discountPercent = exprenseForm >== promotion.expense ? promotion.discountPercent : 0;
-    promotionFromExpenseId = exprenseForm >== promotion.expense ? promotion.id : 0;
-    return expenseResult = exprenseForm - ((exprenseForm / 100) * discountPercent);
-  });
-
-  let minPrice = Math.min(expenseFromCoupon, expenseFromCustomers, expenseFromExpense);
-  let promotionId;
-  switch (minPrice) {
-    case expenseFromCoupon:
-        promotionMinPriceId = promotionFromCouponId;
-      break;
-    case expenseFromCustomers:
-        promotionMinPriceId = promotionFromCustomerId;
-      break;
-    case expenseFromExpense:
-        promotionMinPriceId = promotionFromExpenseId;
-      break;
-    default:
-  }
 
   const bill = {
+    customers:dataCalculateForm.customers,
+    expense:expenseForm,
+    discount:discount,
+    total:total,
+    promotionTitle:promotionTitle,
+    promotionDescription:promotionDescription,
+    discountPercent:discountPercent
+  }
 
-        }
+  return bill;
 
 }
