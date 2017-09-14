@@ -42,10 +42,10 @@ class CalculateForm extends Component {
     })
 
     return (
+      <div className="container">
       <Well>
         <Row>
-          <Col xs={12} sm={6}>
-            <Panel>
+            <Panel className="panel-primary" header="Calculator">
               <FormGroup controlId='customers' validationState={this.props.validation} >
                 <ControlLabel>Customers Qty.</ControlLabel>
                 <FormControl
@@ -66,14 +66,14 @@ class CalculateForm extends Component {
                   {buffetPriceList}
                 </FormControl>
               </FormGroup>
-              <Button onClick={this.handleSubmit.bind(this)}>Calculate !!!!</Button>
+              <Button onClick={this.handleSubmit.bind(this)}>Calculate</Button>
             </Panel>
-          </Col>
         </Row>
         <Row>
           {(this.state.isShow === true )?(<Bill />):('')}
         </Row>
       </Well>
+      </div>
     )
   }
 }

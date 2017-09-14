@@ -13,26 +13,24 @@ class Bill extends Component {
   render() {
     const bill = this.props.bill;
     return(
-      <Well>
-          <Panel>
+          <Panel className="panel-primary" header="Bill">
             <Row>
               <Col xs={12} sm={6}>
                 <p>Customers</p>
-                <p>{bill.promotionTitle} </p>
+                <p>{(bill.promotionTitle === '') ? ('') : (bill.promotionTitle)} </p>
                 <p>Discount</p>
                 <p>Discount (Bath)</p>
                 <p>Total</p>
               </Col>
               <Col xs={12} sm={6}>
                 <p>{bill.customers} (Qty.)</p>
-                <p>&nbsp;</p>
+              {(bill.promotionTitle === '') ? ('') : (<p>&nbsp;</p>)}
                 <p>{bill.discountPercent} %</p>
                 <p>{bill.discount} Bath</p>
                 <p>{bill.total} Bath</p>
               </Col>
             </Row>
           </Panel>
-      </Well>
     )
   }
 }
