@@ -13,14 +13,15 @@ app.use(cookieParser());
 
 // APIS
 
-
 var mongoose = require('mongoose');
 //Mongo LAB
-mongoose.connect('mongodb://bigboss27051:bigboss27051@ds135514.mlab.com:35514/buffet_bill')
-
+var databaseUri = 'mongodb://bigboss27051:bigboss27051@ds135514.mlab.com:35514/buffet_bill';
+mongoose.connect('mongodb://bigboss27051:bigboss27051@ds135514.mlab.com:35514/buffet_bill',{ useMongoClient: true })
 
 var db = mongoose.connection;
 db.on('error',console.error.bind(console,'# MongoDB - connection error :'));
+
+
 
 var Promotions = require('./models/promotions.js');
 var buffetPrices = require('./models/buffetPrices.js');
@@ -41,7 +42,6 @@ app.get('/buffetprices',(req,res)=>{
     if (err) {
       throw err;
     }
-    console.log('buffetPrices',buffetPrices);
     res.json(buffetPrices);
   })
 });
