@@ -10,7 +10,7 @@ let discountPrice = promotions.filter(function(promotion) {
       expenseForm = dataCalculateForm.customers * dataCalculateForm.buffetPrice;
 
       if (dataCalculateForm.customers >= promotion.customers
-        && (promotion.coupon.trim().toLowerCase() === '' || dataCalculateForm.coupon.trim().toLowerCase() === promotion.coupon.trim().toLowerCase())
+        && (promotion.coupon.trim() === '' || dataCalculateForm.coupon.trim().toLowerCase() === promotion.coupon.trim().toLowerCase())
         && expenseForm > promotion.expense) {
           discountPercent = promotion.discountPercent;
           discount = ((expenseForm / 100) * discountPercent);
