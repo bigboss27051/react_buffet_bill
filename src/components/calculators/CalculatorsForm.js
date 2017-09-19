@@ -28,7 +28,6 @@ class CalculateForm extends Component {
       coupon:findDOMNode(this.refs.coupon).value,
       buffetPrice:findDOMNode(this.refs.buffetPrice).value
     }
-    console.log('dataCalculateForm',dataCalculateForm);
     const bill = calculateBill(promotions,dataCalculateForm);
     this.props.postBill(bill);
     this.setState({isShow:true});
