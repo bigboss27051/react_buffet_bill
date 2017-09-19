@@ -12,15 +12,16 @@ let discountPrice = promotions.filter(function(promotion) {
       if (dataCalculateForm.customers >= promotion.customers
         && (promotion.coupon.trim() === '' || dataCalculateForm.coupon.trim().toLowerCase() === promotion.coupon.trim().toLowerCase())
         && expenseForm > promotion.expense) {
-          discountPercent = promotion.discountPercent;
-          discount = ((expenseForm / 100) * discountPercent);
+          let temp_discountPercent = promotion.discountPercent;
+          let temp_discount = ((expenseForm / 100) * discountPercent);
           let temp_expense_calculate = expenseForm - discount;
-          console.log('promotionTitle',promotion.title);
+
           if (temp_expense_calculate < total || total === 0) {
             total = temp_expense_calculate;
             promotionTitle = promotion.title;
-
             promotionDescription = promotion.description;
+            discount = temp_discount;
+            discountPercent = temp_discountPercent;
           }
 
       }else {
